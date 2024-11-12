@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import backgroundImage from '../images/bglogin.jpg';
-import CountryStateCity from './CountryStateCity';
+import backgroundImage from './images/bglogin.jpg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,11 +9,6 @@ const Register = () => {
     const [CompanyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [CompanyUrl, setCompanyUrl] = useState('');
-    const [Location, setLocation] = useState({
-        country: '',
-        state: '',
-        city: ''
-    });
     const [PhoneNumber, setPhoneNumber] = useState('');
     const [Password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
@@ -39,7 +33,6 @@ const Register = () => {
                 Password,
                 CompanyName,
                 CompanyUrl,
-                Location,
                 PhoneNumber,
                 ConfirmPassword
             });
@@ -74,9 +67,7 @@ const Register = () => {
                     <label>Email<br />
                         <input className='w-64 p-1 rounded-xl' type="email" placeholder='Enter your Company Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                     </label>
-                    <label>Location<br />
-                        <CountryStateCity Location={Location} setLocation={setLocation} />
-                    </label>
+
                     <label>Phone Number<br />
                         <input className='w-64 p-1 rounded-xl' type="tel" placeholder='Enter your number' value={PhoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                     </label>
@@ -103,9 +94,6 @@ const Register = () => {
                     text-balck rounded-xl w-60 p-2 '>Register</button>
                     </div>
                 </div>
-
-
-
             </form>
         </div>
     );

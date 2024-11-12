@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Logo from '../images/logo.png';
-import backgroundImage from '../images/bglogin.jpg';
+import Logo from './images/logo.png';
+import backgroundImage from './images/bglogin.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -41,7 +41,7 @@ const Login = () => {
                 localStorage.setItem('authToken', result.token);
                 localStorage.setItem('user', JSON.stringify(result.user));
 
-                navigate('/Enquiry');
+                navigate('/Home');
             } else {
                 console.log("No token in response");
             }
@@ -96,7 +96,7 @@ const Login = () => {
                     className='text-white'>Don't have an Account?<Link to="/register" className='text-blue-600'>Register Now</Link><br />
                 </label>
                 <label
-                    className='text-white'>Developing HomePage<Link to="/Enquiry" className='text-blue-600'>Develop</Link><br />
+                    className='text-white'>Developing HomePage<Link to="/Home" className='text-blue-600'>Develop</Link><br />
                 </label>
 
             </form>

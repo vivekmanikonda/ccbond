@@ -1,14 +1,14 @@
 import React from 'react';
-import { Home, Search, Package, DollarSign, UserCircle, LogOut } from 'lucide-react';
+import { Home, Search, Package, ShoppingCart, UserCircle, LogOut } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
     const menuItems = [
-        { icon: Home, label: 'Home', path: '/' },
+        { icon: Home, label: 'Home', path: '/Home' },
         { icon: Search, label: 'Enquiries', path: '/Enquiry' },
+        { icon: ShoppingCart, label: 'Sales', path: '/sales' },
         { icon: Package, label: 'Products', path: '/products' },
-        { icon: DollarSign, label: 'Sales', path: '/sales' },
         { icon: UserCircle, label: 'Account', path: '/account' },
     ];
 

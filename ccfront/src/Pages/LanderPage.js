@@ -148,7 +148,6 @@ const LanderPage = () => {
                     <button className='bg-black text-white p-2 b-2 rounded'>Register Now</button>
                     <button className='text-black bg-gray-300 p-2 b-2 rounded'>Login Now</button>
                 </div>
-            
             </div>
 
         </>
