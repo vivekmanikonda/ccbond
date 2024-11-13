@@ -18,10 +18,40 @@ const EnquirySchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    Location: {
+        country: {
+            type: String,
+            required: true,
+        },
+        state: {
+            type: String,
+            required: true,
+        },
+        city: {
+            type: String,
+            required: true,
+        },
+    },
 
-    Description:{
+    Description: {
         type: String,
-        required: false
+
+    },
+    Structure: {
+        type: File,
+
+    },
+    Quote: {
+        type: String
+
+    },
+    Document: {
+        type: File,
+
+    },
+    DatePosted: {
+        type: Date,
+        default: Date.now
     },
 
 })

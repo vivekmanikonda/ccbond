@@ -6,8 +6,8 @@ const generateToken = require('../utils/generateToken');
 
 // Register User
 exports.RegisterUser = async (req, res) => {
-    const { Name, email, Password, CompanyName, CompanyUrl, Location, PhoneNumber } = req.body;
-    console.log("Received registration request:", { Name, email, CompanyName, CompanyUrl, Location, PhoneNumber });
+    const { Name, email, Password, CompanyName, CompanyUrl, PhoneNumber } = req.body;
+    console.log("Received registration request:", { Name, email, CompanyName, CompanyUrl, PhoneNumber });
 
     try {
         // Check if the user already exists
@@ -27,7 +27,6 @@ exports.RegisterUser = async (req, res) => {
             Password: hashedPassword, // Store hashed password
             CompanyName,
             CompanyUrl,
-            Location,
             PhoneNumber
         });
 
