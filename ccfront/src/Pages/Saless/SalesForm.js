@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CountryStateCity from '../../Components/CountryStateCity';
 import { CircleX } from 'lucide-react';
+import CloseFormDialog from '../../Components/CloseFormDialog';
 
 
 const SalesForm = () => {
@@ -20,23 +21,39 @@ const SalesForm = () => {
     state: '',
     city: ''
   });
-
+  const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
   const closeForm = () => {
+    setOpenDialog(true); // Open confirmation dialog
+  };
+  //  "Yes" 
+  const handleConfirmClose = () => {
+    setOpenDialog(false); // Close dialog
     navigate('/Sales');
-    alert("Form is Closed!!");
+  };
+  const handleCancelClose = () => {
+    setOpenDialog(false); //  close dialog
   };
 
-  return (
+return (
+  <>
+
     <div className="min-h-screen ml-64 mt-7 mb-7 flex items-center justify-center ">
       <div className="max-w-4xl w-full p-8 bg-white border rounded-lg shadow-2xl ">
         <form>
           <h2 className="text-2xl font-semibold text-center mb-6">Sales Form
           </h2>
           <div className="flex justify-end mb-2">
-            <button onClick={closeForm}>
+            <button
+              onClick={closeForm}
+              type="button">
               <CircleX size={28} />
             </button>
+            <CloseFormDialog
+              open={openDialog}
+              onConfirm={handleConfirmClose}
+              onCancel={handleCancelClose}
+            />
           </div>
           {/*Form Feilds.. */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -189,7 +206,8 @@ const SalesForm = () => {
         </form>
       </div>
     </div>
-  );
+  </>
+);
 };
 
 export default SalesForm;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import backgroundImage from './images/bglogin.jpg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
+
 
 const Register = () => {
     const [Name, setName] = useState('');
@@ -162,7 +164,11 @@ const Register = () => {
 
                 {/* Error and Success Messages */}
                 {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
-                {successMessage && <p className="text-green-500 mt-4 text-center">{successMessage}</p>}
+                {
+                    successMessage && < Alert variant="filled" severity="success">
+                        Registered Successfully!!
+                    </Alert>
+                }
 
                 {/* Submit Button */}
                 <button
@@ -171,8 +177,8 @@ const Register = () => {
                 >
                     Register
                 </button>
-            </form>
-        </div>
+            </form >
+        </div >
     );
 }
 

@@ -10,6 +10,7 @@ import ChatBot from './Components/chatbot';
 import HomePage from './Pages/HomePage';
 import Sales from './Pages/Saless/Sales';
 import SalesForm from './Pages/Saless/SalesForm';
+import SearchBar from './Components/SearchBar';
 
 function App() {
   return (
@@ -27,15 +28,19 @@ const ToSeeComponents = () => {
     <>
       {!isAuthPage && <Sidebar />}
       {!isAuthPage && <ChatBot />}
+      {!isAuthPage && <SearchBar />}
       <Routes>
         <Route path="/" element={<LanderPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/*here paths are after logging inn */}
         <Route path="/Home" element={<HomePage />} />
         <Route path="/Enquiry" element={<Enquiry />} />
         <Route path="/CreateEnquiry" element={<Form />} />
         <Route path="/Sales" element={<Sales />} />
         <Route path="/CreateSales" element={< SalesForm />} />
+        <Route path="/SearchBar" element={< SearchBar />} />
       </Routes>
     </>
   );
