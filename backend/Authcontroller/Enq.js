@@ -1,7 +1,7 @@
-import EnquiryModel from '../models/Enquiry';
+const EnquiryModel = require('../models/Enquiry');
 const Express = require('express');
 
-export const CreateEnquiry = async (req, res) => {
+exports.createEnquiry = async (req, res) => {
     //req data
     const {
         Productname, Casno, Quantity, Purity, Description, Quote, Document, Location } = req.body;
@@ -9,6 +9,7 @@ export const CreateEnquiry = async (req, res) => {
     if (!Productname || !Location || !Quantity || !Casno || !Purity || !Quote) {
         return res.status(400).json({ message: "Please fill all required fields.'" })
     }
+    console.log(req.body)
     // if there it will create enquiry
     try {
         const formData = new EnquiryModel({
@@ -23,7 +24,7 @@ export const CreateEnquiry = async (req, res) => {
     }
 }
 
-export const getEnquiry = async (req, res) => {
+exports.getEnquiry = async (req, res) => {
     try {
         const enquiries = await EnquiryModel.find();
         return res.status(201).json(enquiries);

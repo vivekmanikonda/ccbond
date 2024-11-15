@@ -29,11 +29,6 @@ const Enquiry = () => {
         }
         fetchenquiry();
     }, [])
-    if (!enquirydata) {
-        return <div>Loading...</div>; // Or an error message if needed
-    }
-
-
     return (
         <>
             <Search />
@@ -43,44 +38,48 @@ const Enquiry = () => {
             </div>
             <div className="flex items-center justify-center ml-72">
                 <div className="flex h-[430px] w-[770px] bg-slate-100 rounded-lg shadow-lg p-6">
-                    <div className='grid grid-cols-2 font-inter'>
-                        <div>
-                            <h1 className='font-bold text-4xl mt-7'>Product Name</h1>
-                            <ul className="mt-3 text-gray-700 text-[20px]  p-4">
-                                <li >
-                                    <span className="font-semibold ">CAS Number:</span> 105-38-7
-                                </li>
-                                <li className='mt-2'>
-                                    <span className="font-semibold ">Quantity:</span> 200kg
-                                </li>
-                                <li className='mt-2'>
-                                    <span className="font-semibold ">Purity:</span> 98%
-                                </li>
-                                <li className='mt-2'>
-                                    <span className="font-semibold ">Need:</span> 3kg
-                                </li>
-                                <li className='mt-2'>
-                                    <span className="font-semibold ">Posted:</span> 30 Sep 2024
-                                </li>
-                                <li className='mt-6 mb-5'>
-                                    <button className="p-2 bg-black text-white rounded-md text-[16px] hover:bg-gray-700 transition duration-200 ease-in-out shadow-sm">
-                                        Contact
-                                    </button>
-                                </li>
-                                <div className='text-[16px] flex '>
-                                    <Building2 className='mr-1' />Company Name
+//to get the data..
+                    {enquirydata.map((enquiry) => {
+
+                        <div className='grid grid-cols-2 font-inter ' key={enquiry.id}>
+                            <div>
+                                <h1 className='font-bold text-4xl mt-7'>{enquiry.Productname}</h1>
+                                <ul className="mt-3 text-gray-700 text-[20px]  p-4">
+                                    <li >
+                                        <span className="font-semibold ">CAS Number:</span> 105-38-7
+                                    </li>
+                                    <li className='mt-2'>
+                                        <span className="font-semibold ">Quantity:</span> 200kg
+                                    </li>
+                                    <li className='mt-2'>
+                                        <span className="font-semibold ">Purity:</span> 98%
+                                    </li>
+                                    <li className='mt-2'>
+                                        <span className="font-semibold ">Need:</span> 3kg
+                                    </li>
+                                    <li className='mt-2'>
+                                        <span className="font-semibold ">Posted:</span> 30 Sep 2024
+                                    </li>
+                                    <li className='mt-6 mb-5'>
+                                        <button className="p-2 bg-black text-white rounded-md text-[16px] hover:bg-gray-700 transition duration-200 ease-in-out shadow-sm">
+                                            Contact
+                                        </button>
+                                    </li>
+                                    <div className='text-[16px] flex '>
+                                        <Building2 className='mr-1' />Company Name
+                                    </div>
+                                </ul>
+                            </div>
+                            <div className='flex items-center flex-col mt-6 '>
+                                <div className="flex-shrink-0 ">
+                                    <img src={p1} width={320} height={320} alt="Structure img" className="rounded-lg shadow-lg ml-10" />
                                 </div>
-                            </ul>
-                        </div>
-                        <div className='flex items-center flex-col mt-6 '>
-                            <div className="flex-shrink-0 ">
-                                <img src={p1} width={320} height={320} alt="Structure img" className="rounded-lg shadow-lg ml-10" />
-                            </div>
-                            <div className='text-[18px] flex mt-4 justify-end ml-48'>
-                                View<CircleArrowRight className=' ml-1 flex items-center justify-center' />
+                                <div className='text-[18px] flex mt-4 justify-end ml-48'>
+                                    View<CircleArrowRight className=' ml-1 flex items-center justify-center' />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    })}
                 </div>
             </div>
             <AllSettings />
