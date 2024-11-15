@@ -39,7 +39,7 @@ const Form = () => {
     const hanleEnquiryForm = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/', {
+            const response = await axios.post('http://localhost:3000/auth/CreateEnquiry', {
                 Productname,
                 Casno,
                 Quantity,

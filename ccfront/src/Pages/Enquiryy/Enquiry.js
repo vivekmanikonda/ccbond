@@ -1,17 +1,42 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import p1 from '../images/c3.webp'
-import { Search, Building2,CircleArrowRight} from 'lucide-react'
+import { Search, Building2, CircleArrowRight } from 'lucide-react'
+import AllSettings from '../../Components/AllSettings';
+import { useState, useEffect } from 'react';
 
 const Enquiry = () => {
     const navigate = useNavigate();
     const openForm = () => {
         navigate('/CreateEnquiry');
     };
+    //usestate
+    const [enquirydata, setEnquirydata] = useState();
+    //useeffect for fetching data
+    useEffect(() => {
+        async function fetchenquiry() {
+            try {
+                const response = await fetch('http://localhost:3000/Enquiry')
+                if (!response.ok) {
+                    throw new console.error("error fetching data");
+                }
+                const data = await response.json();
+                setEnquirydata(data[0]);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+
+            }
+        }
+        fetchenquiry();
+    }, [])
+    if (!enquirydata) {
+        return <div>Loading...</div>; // Or an error message if needed
+    }
+
 
     return (
         <>
-           <Search/>
+            <Search />
             {/*DETAILS FROM DATABASE */}
             <div className=' flex justify-end '>
                 <button className='bg-slate-300 p-2' onClick={openForm}>ADD ENQUIRY</button>
@@ -58,6 +83,8 @@ const Enquiry = () => {
                     </div>
                 </div>
             </div>
+            <AllSettings />
+
         </>
     );
 };

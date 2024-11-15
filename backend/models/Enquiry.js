@@ -47,7 +47,6 @@ const EnquirySchema = new mongoose.Schema({
     },
     Document: {
         type: File,
-
     },
     DatePosted: {
         type: Date,
@@ -57,3 +56,11 @@ const EnquirySchema = new mongoose.Schema({
 })
 const EnquiryModel = mongoose.model("Enquiry", EnquirySchema);
 module.exports = EnquiryModel;
+
+const fileSchema = new mongoose.Schema({
+    file: Buffer,
+    filename: String,
+    contentType: String
+});
+
+const File = mongoose.model('File', fileSchema);

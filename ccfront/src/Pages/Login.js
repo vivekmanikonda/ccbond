@@ -28,7 +28,7 @@ const Login = () => {
                 body: JSON.stringify(loginData),
             });
 
-            // Check if response is OK (status 200)
+            // Check if response is OK 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
